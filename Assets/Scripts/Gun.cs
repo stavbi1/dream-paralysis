@@ -23,10 +23,10 @@ public class Gun : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        if (Input.GetButtonDown("Fire1"))
+        //if (Input.GetButtonDown("Fire1"))
+        if (Input.anyKeyDown)
         {
-            //Shoot();
-            sceneManager.SpawnMobs();
+            Shoot();
         }
     }
 
