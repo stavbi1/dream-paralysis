@@ -6,9 +6,9 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public ParticleSystem impactEffect;
     public AudioClip gunShotAudio;
-    public GameObject sceneManagerGO;
+    public GameObject sceneHelperGO;
 
-    private SceneManager sceneManager;
+    private SceneHelper sceneHelper;
     private float damage = 25f;
     private float range = 100f;
     private Animator animator;
@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
 
     void Start()
     {
-        sceneManager = sceneManagerGO.GetComponent<SceneManager>();
+        sceneHelper = sceneHelperGO.GetComponent<SceneHelper>();
     }
 
     void Update()

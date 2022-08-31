@@ -445,7 +445,7 @@ AudioSource:
   m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
-  Mute: 0
+  Mute: 1
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -556,6 +556,7 @@ MonoBehaviour:
   - {fileID: 4876412079838335917, guid: 75b24f51824619a42a0e32a6e7bba47b, type: 3}
   portalPrefabs:
   - {fileID: 4495699992475590417, guid: 42459d169d3d11349bb9482640ad0ba9, type: 3}
+  - {fileID: 4495699992475590417, guid: 2b292cd83167182488d379de05dfe59b, type: 3}
   player: {fileID: 1200825783}
 --- !u!1001 &667310763
 PrefabInstance:
@@ -683,7 +684,7 @@ PrefabInstance:
     - target: {fileID: 8065548472409191091, guid: 46ef6d5178ef8654fa11bc9198ca1236,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 36.1
+      value: 36.100006
       objectReference: {fileID: 0}
     - target: {fileID: 8065548472409191091, guid: 46ef6d5178ef8654fa11bc9198ca1236,
         type: 3}
@@ -6066,9 +6067,9 @@ Canvas:
   m_GameObject: {fileID: 1026480995}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 959308592}
+  m_PlaneDistance: 0.83
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
