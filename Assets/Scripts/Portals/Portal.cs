@@ -1,9 +1,8 @@
 using UnityEngine;
-using System.Collections;
 
 public abstract class Portal : MonoBehaviour
 {
-    public GameObject musicGO;
+    public GameObject sceneHelperGO;
 
     public abstract void Activate();
 

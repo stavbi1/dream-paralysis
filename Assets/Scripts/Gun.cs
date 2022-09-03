@@ -6,18 +6,11 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public ParticleSystem impactEffect;
     public AudioClip gunShotAudio;
-    public GameObject sceneHelperGO;
 
-    private SceneHelper sceneHelper;
     private float damage = 25f;
     private float range = 100f;
     private Animator animator;
     private const string SHOOTING_ANIMATION = "Shoot";
-
-    void Start()
-    {
-        sceneHelper = sceneHelperGO.GetComponent<SceneHelper>();
-    }
 
     void Update()
     {
@@ -34,14 +27,22 @@ public class Gun : MonoBehaviour
     {
         if (!animator.GetCurrentAnimatorStateInfo(0).IsName(SHOOTING_ANIMATION)) { 
             RaycastHit hit;
-            muzzleFlash.Play();
+
+            if (muzzleFlash != null)
+            {
+                muzzleFlash.Play();
+            }
+
             AudioSource.PlayClipAtPoint(gunShotAudio, transform.position);
             animator.SetTrigger(SHOOTING_ANIMATION);
 
             if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
             {
-                GameObject impact = Instantiate(impactEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal));
-                Destroy(impact, 1.0f);
+                if (impactEffect != null)
+                {
+                    GameObject impact = Instantiate(impactEffect.gameObject, hit.point, Quaternion.LookRotation(hit.normal));
+                    Destroy(impact, 1.0f);
+                }
 
                 if (hit.transform.CompareTag("Mob"))
                 {

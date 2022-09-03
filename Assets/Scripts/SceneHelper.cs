@@ -1,4 +1,3 @@
-using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ public class SceneHelper : MonoBehaviour
             Destroy(currentPortal);
             GameObject portalGO = portalPrefabs[Random.Range(0, portalPrefabs.Count)];
             Portal portal = portalGO.GetComponent<Portal>();
-            portal.musicGO = gameObject;
+            portal.sceneHelperGO = gameObject;
 
             currentPortal = SpawnInRadius(5, 10, portalGO);
         }

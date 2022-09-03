@@ -8,7 +8,7 @@ public class SlowerPortal : Portal
 
     private void Start()
     {
-        BGMusic = musicGO.GetComponent<AudioSource>();
+        BGMusic = sceneHelperGO.GetComponent<AudioSource>();
     }
 
     public override void Activate()
