@@ -3,6 +3,8 @@ using UnityEngine;
 public abstract class Portal : MonoBehaviour
 {
     public GameObject sceneHelperGO;
+    public AudioClip clockChime;
+    public GameObject playerGO;
 
     public abstract void Activate();
 

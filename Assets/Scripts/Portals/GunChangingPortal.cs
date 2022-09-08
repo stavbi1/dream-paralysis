@@ -5,7 +5,7 @@ public class GunChangingPortal : Portal
 
     private void Start()
     {
-        player = sceneHelperGO.GetComponent<SceneHelper>().player.GetComponent<Player>();
+        player = playerGO.GetComponent<Player>();
     }
 
     public override void Activate()

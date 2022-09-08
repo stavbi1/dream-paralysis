@@ -13,6 +13,7 @@ public class SlowerPortal : Portal
 
     public override void Activate()
     {
+        AudioSource.PlayClipAtPoint(clockChime, playerGO.transform.position);
         StartCoroutine(SlowTime());
     }
 

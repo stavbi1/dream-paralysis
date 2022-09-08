@@ -6,6 +6,7 @@ public class SceneHelper : MonoBehaviour
     public List<GameObject> mobPrefabs;
     public List<GameObject> portalPrefabs;
     public GameObject player;
+    public AudioClip clockChime;
 
     private GameObject currentPortal;
     private const float PORTAL_SPAWN_CHANCE = 0.95f;
@@ -34,6 +35,8 @@ public class SceneHelper : MonoBehaviour
             GameObject portalGO = portalPrefabs[Random.Range(0, portalPrefabs.Count)];
             Portal portal = portalGO.GetComponent<Portal>();
             portal.sceneHelperGO = gameObject;
+            portal.clockChime = clockChime;
+            portal.playerGO = player;
 
             currentPortal = SpawnInRadius(5, 10, portalGO);
         }
