@@ -4814,7 +4814,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4495699992475590417}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 1}
@@ -4831,4 +4831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95195413a62bbaa4bb4e1d7a2e47cde7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicGO: {fileID: 0}
+  sceneHelperGO: {fileID: 0}
+  clockChime: {fileID: 8300000, guid: a77fcacfb5261794690f652aabd2bd8b, type: 3}
+  playerGO: {fileID: 0}
