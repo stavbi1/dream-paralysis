@@ -15,6 +15,9 @@ public class Mob : MonoBehaviour
     public GameObject playerGO;
     public GameObject rendererGO;
     public GameObject sceneHelperGO;
+    public AudioClip damageSound;
+    public AudioClip preAttackSound;
+    public AudioClip attackSound;
 
     private Dictionary<State, string> States = new Dictionary<State, string>() {
         { State.WALK , "Walk"},
@@ -23,7 +26,7 @@ public class Mob : MonoBehaviour
         { State.ATTACK, "Attack" }
     };
     private bool isDying = false;
-    private float HP = 150;
+    private float HP = 30;
     private float damage = 5;
 
     private SceneHelper sceneManager;
@@ -39,7 +42,6 @@ public class Mob : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         nav.SetDestination(playerGO.transform.position);
-
     }
 
     void FixedUpdate()
@@ -56,6 +58,8 @@ public class Mob : MonoBehaviour
     public void TakeDamage(float damage)
     {
         if (!isDying) {
+            if (damageSound) AudioSource.PlayClipAtPoint(damageSound, transform.position);
+
             HP -= damage;
 
             if (HP <= 0)
@@ -69,9 +73,25 @@ public class Mob : MonoBehaviour
         }
     }
 
+    public void OnAttackStart()
+    {
+        if (preAttackSound) AudioSource.PlayClipAtPoint(preAttackSound, transform.position);
+        if (attackSound) Invoke(nameof(PlayAttackSound), 0.5f);
+    }
+
     public void OnAttackEnd()
     {
         player.TakeDamage(damage);
+    }
+
+    public void UpdateDestination()
+    {
+        nav.SetDestination(playerGO.transform.position);
+    }
+
+    private void PlayAttackSound()
+    {
+        AudioSource.PlayClipAtPoint(attackSound, transform.position);
     }
 
     private void Die()
@@ -80,7 +100,7 @@ public class Mob : MonoBehaviour
         isDying = true;
         animator.SetTrigger(States[State.DIE]);
         Destroy(gameObject, 1f);
-        sceneManager.OnFinishedMobs();
+        sceneManager.OnMobDie();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -4,6 +4,7 @@ public class Pistol : Gun
 {
     public GameObject crosshair;
 
+    private readonly int TRIGGER_LAYER_MASK_IGNORE = -5;
     private float damage = 25f;
     private float range = 100f;
 
@@ -13,7 +14,14 @@ public class Pistol : Gun
 
         RaycastHit hit;
 
-        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        if (Physics.Raycast(
+            fpsCamera.transform.position,
+            fpsCamera.transform.forward,
+            out hit,
+            range,
+            TRIGGER_LAYER_MASK_IGNORE,
+            QueryTriggerInteraction.Ignore
+        ))
         {
             if (impactEffect != null)
             {
