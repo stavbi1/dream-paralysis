@@ -18,6 +18,7 @@ public class Mob : MonoBehaviour
     public AudioClip damageSound;
     public AudioClip preAttackSound;
     public AudioClip attackSound;
+    public float HP = 100;
 
     private Dictionary<State, string> States = new Dictionary<State, string>() {
         { State.WALK , "Walk"},
@@ -26,8 +27,7 @@ public class Mob : MonoBehaviour
         { State.ATTACK, "Attack" }
     };
     private bool isDying = false;
-    private float HP = 30;
-    private float damage = 5;
+    private float damage = 4;
 
     private SceneHelper sceneManager;
     private Player player;

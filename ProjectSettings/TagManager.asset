@@ -9,6 +9,7 @@ TagManager:
   - Portal
   - start
   - exit
+  - Interactable
   layers:
   - Default
   - TransparentFX

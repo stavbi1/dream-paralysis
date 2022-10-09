@@ -5,7 +5,7 @@ public class Pistol : Gun
     public GameObject crosshair;
 
     private readonly int TRIGGER_LAYER_MASK_IGNORE = -5;
-    private float damage = 25f;
+    private float damage = 20f;
     private float range = 100f;
 
     protected override void Shoot()

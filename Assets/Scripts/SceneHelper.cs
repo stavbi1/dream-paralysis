@@ -1,36 +1,63 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneHelper : MonoBehaviour
 {
     public List<GameObject> progressPortals;
     public List<GameObject> mobPrefabs;
     public List<GameObject> portalPrefabs;
-    public GameObject player;
+    public GameObject playerGO;
     public AudioClip clockChime;
-    
-    private Mob spawnedMob;
+    public AudioClip healthPotionSound;
+    public GameObject timerTextGO;
+
+    private Player player;
     private GameObject currentPortal;
-    private int mobsKilled;
+    private int wavesCleared;
+    private int leverShots;
+    private Text timerText;
+    private int mobWaveCount;
     private const float PORTAL_SPAWN_CHANCE = 0.95f;
-    private const int MOBS_KILLED_PROGRESS = 2;
+    private const int WAVES_PROGRESS = 5;
     private const int MAX_LEVELS = 2;
 
     private void Start()
     {
-        mobsKilled = 0;
+        mobWaveCount = 1;
+        wavesCleared = 0;
+        leverShots = 0;
+        timerText = timerTextGO.GetComponent<Text>();
+        player = playerGO.GetComponent<Player>();
+    }
+
+    public void AddLeverShot()
+    {
+        leverShots++;
+    }
+
+    public int GetLeverShots()
+    {
+        return leverShots;
     }
 
     public void OnMobDie()
     {
-        if (GetCurrentLevel() < MAX_LEVELS)
+        mobWaveCount--;
+
+        if (mobWaveCount <= 0 && GetCurrentLevel() < MAX_LEVELS)
         {
-            mobsKilled++;
+            wavesCleared++;
 
             if (IsNextLevel())
             {
-                Destroy(currentPortal);
-                progressPortals[GetCurrentLevel()].SetActive(true);
+                if (currentPortal)
+                {
+                    currentPortal.GetComponent<Portal>().DestroySelf();
+                }
+
+                player.SwitchGunToPistol();
+                progressPortals[GetCurrentLevel() - 1].SetActive(true);
             } else
             {
                 SpawnMobs();
@@ -46,11 +73,15 @@ public class SceneHelper : MonoBehaviour
         {
             GameObject mobGO = mobPrefabs[GetCurrentLevel() % mobPrefabs.Count];
             Mob mob = mobGO.GetComponent<Mob>();
-            mob.playerGO = player;
+            mob.playerGO = playerGO;
             mob.sceneHelperGO = gameObject;
+            mobWaveCount = Random.Range(1, 3);
 
-            GameObject spawnedMobGO = SpawnInRadius(25, 40, mobGO);
-            spawnedMob = spawnedMobGO.GetComponent<Mob>();
+            Debug.Log(mobWaveCount);
+            for (int i = 0; i < mobWaveCount; i++)
+            {
+                SpawnInRadius(15, 35, mobGO);
+            }
         }
     }
 
@@ -71,22 +102,22 @@ public class SceneHelper : MonoBehaviour
         return Instantiate(toSpawn, randomPosition, Quaternion.Euler(new Vector3(0, 0, 0)));
     }
 
-    public void UpdateMobDestination()
-    {
-        spawnedMob.UpdateDestination();
-    }
-
     private void SpawnPortals()
     {
-        
         if (Random.value < PORTAL_SPAWN_CHANCE)
         {
-            Destroy(currentPortal);
+            if (currentPortal)
+            {
+                currentPortal.GetComponent<Portal>().DestroySelf();
+            }
+
             GameObject portalGO = portalPrefabs[Random.Range(0, portalPrefabs.Count)];
             Portal portal = portalGO.GetComponent<Portal>();
             portal.sceneHelperGO = gameObject;
             portal.clockChime = clockChime;
-            portal.playerGO = player;
+            portal.healthPotionSound = healthPotionSound;
+            portal.timerText = timerText;
+            portal.playerGO = playerGO;
 
             currentPortal = SpawnInRadius(5, 10, portalGO);
         }
@@ -94,11 +125,11 @@ public class SceneHelper : MonoBehaviour
 
     private int GetCurrentLevel()
     {
-        return mobsKilled / MOBS_KILLED_PROGRESS;
+        return wavesCleared / WAVES_PROGRESS;
     }
 
     private bool IsNextLevel()
     {
-        return mobsKilled % MOBS_KILLED_PROGRESS == 0;
+        return wavesCleared % WAVES_PROGRESS == 0;
     }
 }

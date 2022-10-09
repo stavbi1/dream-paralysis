@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5094014659136950706}
   m_Layer: 0
   m_Name: GunChanger
-  m_TagString: Portal
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -224,7 +224,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.3773585, g: 0.06550373, b: 0.06550373, a: 1}
-      maxColor: {r: 0.6509434, g: 0.06140975, b: 0, a: 1}
+      maxColor: {r: 1, g: 0.9800461, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4834,3 +4834,5 @@ MonoBehaviour:
   sceneHelperGO: {fileID: 0}
   clockChime: {fileID: 8300000, guid: a77fcacfb5261794690f652aabd2bd8b, type: 3}
   playerGO: {fileID: 0}
+  timerText: {fileID: 0}
+  isEnabled: 0

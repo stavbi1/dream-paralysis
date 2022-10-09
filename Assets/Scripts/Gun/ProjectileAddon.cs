@@ -5,7 +5,7 @@ public class ProjectileAddon : MonoBehaviour
     public ParticleSystem impactEffect;
     public AudioClip impactSound;
 
-    private float damage = 50f;
+    private float damage = 35f;
 
     private void OnCollisionEnter(Collision collision)
     {

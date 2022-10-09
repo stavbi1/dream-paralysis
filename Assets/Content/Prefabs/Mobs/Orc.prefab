@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 28be76be52908a740b7a6b8be274126a,
         type: 3}
       propertyPath: m_Name
-      value: SK_ORC_AXE
+      value: Orc
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 28be76be52908a740b7a6b8be274126a,
         type: 3}
@@ -166,6 +166,28 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5899180119117290827}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &1731696475
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417614258628147491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2959467708922500008, guid: 28be76be52908a740b7a6b8be274126a, type: 3}
+--- !u!33 &1731696476
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417614258628147491}
+  m_Mesh: {fileID: 2959467708922500008, guid: 28be76be52908a740b7a6b8be274126a, type: 3}
 --- !u!54 &1808965820
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -232,6 +254,7 @@ MonoBehaviour:
   damageSound: {fileID: 8300000, guid: 080f08d536a8ffc4f82e48bd211683bb, type: 3}
   preAttackSound: {fileID: 8300000, guid: 8fea2d264b9f98c4287de757c28086a8, type: 3}
   attackSound: {fileID: 8300000, guid: 3c29b60c14a188640a5461e9f07227f1, type: 3}
+  HP: 150
 --- !u!195 &1808965818
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -242,7 +265,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.94
-  m_Speed: 1.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -254,25 +277,3 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!64 &1731696475
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417614258628147491}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2959467708922500008, guid: 28be76be52908a740b7a6b8be274126a, type: 3}
---- !u!33 &1731696476
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417614258628147491}
-  m_Mesh: {fileID: 2959467708922500008, guid: 28be76be52908a740b7a6b8be274126a, type: 3}

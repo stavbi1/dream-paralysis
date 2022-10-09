@@ -52,10 +52,10 @@ public abstract class Gun : MonoBehaviour
             Mob mob = hit.GetComponentInParent<Mob>();
             mob.TakeDamage(damage);
         }
-        else if (hit.CompareTag("Portal"))
+        else if (hit.CompareTag("Interactable"))
         {
-            Portal portal = hit.GetComponent<Portal>();
-            portal.Activate();
+            IInteractable interactable = hit.GetComponent<IInteractable>();
+            interactable.Interact();
         }
     }
 }

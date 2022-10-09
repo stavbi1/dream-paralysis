@@ -8,7 +8,7 @@ public class GunChangingPortal : Portal
         player = playerGO.GetComponent<Player>();
     }
 
-    public override void Activate()
+    public override void Interact()
     {
         player.SwitchGun();
 
