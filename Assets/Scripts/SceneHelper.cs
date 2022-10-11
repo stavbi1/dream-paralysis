@@ -77,7 +77,6 @@ public class SceneHelper : MonoBehaviour
             mob.sceneHelperGO = gameObject;
             mobWaveCount = Random.Range(1, 3);
 
-            Debug.Log(mobWaveCount);
             for (int i = 0; i < mobWaveCount; i++)
             {
                 SpawnInRadius(15, 35, mobGO);

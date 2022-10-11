@@ -21,7 +21,6 @@ public abstract class Gun : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
         if (readyToShoot && Input.anyKeyDown)
         {
             readyToShoot = false;
